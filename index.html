@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 手机上一定要加上这一行
+      注意initial-scale=1.0，默认是2.0，这样每次切过来切过去都要缩放
+    -->
+    <title>my first page</title>
+    <style>
+      body {
+        background: #eee;
+        /* 修改页面背景 */
+      }
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        /* 将内边距和外边距都取消 */
+      }
+      @keyframes x {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      #bagua {
+        /* border: 2px solid black; */
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        /* 将圆形之外的部分删掉 */
+        animation: x 10s infinite linear;
+        /* 10秒钟执行一次x动画，让他一直执行，每次都是线性执行 */
+        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.75);
+      }
+
+      @media (max-width: 500px) {
+        /* 媒体查询,media语法，在最大宽度小于500的设备上，
+          运行下面的样式 */
+        #bagua {
+          width: 200px;
+          height: 200px;
+        }
+      }
+      #bagua > div:first-child {
+        /* bagua下的div子元素，只选择第一个 */
+        /* border: 10px solid green; */
+        width: 50%;
+        height: 100%;
+        background: black;
+        position: absolute;
+        left: 0;
+      }
+      #bagua > div:nth-child(2) {
+        /* border: 0px solid blue; */
+        width: 50%;
+        height: 100%;
+        background: white;
+        position: absolute;
+        /* 绝对定位的元素会浮起来，所以看不到第三个div元素 */
+        right: 0;
+      }
+
+      #bagua > div:nth-child(3) {
+        /* border: 10px solid blue; */
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        left: 50%;
+
+        margin-left: -100px;
+        /* 是左上角的位置，先让左上角在中间，然后回退自身宽度的一半 */
+        border-radius: 50%;
+        background: black;
+      }
+      #bagua > div:nth-child(4) {
+        /* border: 10px solid green; */
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        left: 50%;
+        margin-left: -100px;
+        bottom: 0;
+        border-radius: 50%;
+        background: white;
+      }
+      @media (max-width: 500px) {
+        #bagua > div:nth-child(3) {
+          width: 100px;
+          height: 100px;
+          margin-left: -50px;
+        }
+        #bagua > div:nth-child(4) {
+          width: 100px;
+          height: 100px;
+          margin-left: -50px;
+        }
+      }
+      #bagua > div:nth-child(5) {
+        /* border: 10px solid green; */
+        background: white;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 50%;
+        top: 75px;
+        margin-left: -25px;
+        border-radius: 50%;
+      }
+      #bagua > div:nth-child(6) {
+        /* border: 10px solid red; */
+        position: absolute;
+        background: black;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        left: 50%;
+        margin-left: -25px;
+        bottom: 75px;
+      }
+      @media (max-width: 500px) {
+        #bagua > div:nth-child(5) {
+          width: 25px;
+          height: 25px;
+          margin-left: -12.5px;
+          top: 37.5px;
+        }
+        #bagua > div:nth-child(6) {
+          width: 25px;
+          height: 25px;
+          margin-left: -12.5px;
+          bottom: 37.5px;
+        }
+      }
+      #bagua-wrapper {
+        /* border: 10px solid red; */
+        height: 100vh;
+        /* vh=viewpoint height，用户的可视范围 */
+        display: flex;
+        /* flex会默认把元素一字排开 */
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* 让flex竖着排开 */
+      }
+      #bagua-description {
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bagua-wrapper">
+      <div id="bagua">
+        <!-- 两个大圆 -->
+        <div></div>
+        <div></div>
+        <!-- 两个中圆 -->
+        <div></div>
+        <!-- 右边突出的黑色可以在上面再画一个圆 -->
+        <div></div>
+        <!-- 两个小圆 -->
+        <div></div>
+        <div></div>
+      </div>
+      <div id="bagua-description">道可道，非可道</div>
+    </div>
+  </body>
+</html>
